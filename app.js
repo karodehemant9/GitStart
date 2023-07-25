@@ -1,30 +1,24 @@
-//Making the title have a black border
-let headerTitle = document.getElementById('header-title');
-let mainHeader = document.getElementById('main-header');
-headerTitle.style.border = 'solid 3px #000'
-mainHeader.style.border = 'solid 3px #000'
+//Query Selector
 
-//making ADD ITEM bold and change the font color to green
-let lists = document.getElementsByClassName('title');
-lists[0].style.fontWeight = 'bold'
-lists[0].style.color = 'green'
+let listItem2 = document.querySelector('.list-group-item:nth-child(2)');
+console.log(listItem2)
+listItem2.style.backgroundColor = 'green';
+
+let listItem3 = document.querySelector('.list-group-item:nth-child(3)');
+listItem3.style.display = 'none'
 
 
+//Query Selector All
 
+let listItems = document.querySelectorAll('.list-group-item');
+console.log(listItems)
 
-//this getElementsByTagName is working on newly added <li>Item 5</li>
-let li = document.getElementsByTagName('li')
+listItems[1].style.color = 'white'
 
-for(let i = 0;i<li.length;i++)
+for(let i = 0;i<listItems.length;i++)
 {
-    li[i].style.fontWeight = 'bold'
-    li[i].style.backgroundColor = '#f4f4f4'
-}
-
-//this getElementsByClassName is not working on newly added <li>Item 5</li>
-let items = document.getElementsByClassName('list-group-item');
-for(let i = 0;i<li.length;i++)
-{
-    items[i].style.fontWeight = 'bold'
-    items[i].style.backgroundColor = 'green'
+    if(i%2 != 0)
+    {
+        listItems[i].style.backgroundColor = 'green'
+    }
 }
