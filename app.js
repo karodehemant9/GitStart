@@ -1,24 +1,72 @@
-//Query Selector
+//traversing the DOM
+let itemList = document.querySelector('#items')
 
-let listItem2 = document.querySelector('.list-group-item:nth-child(2)');
-console.log(listItem2)
-listItem2.style.backgroundColor = 'green';
+//prentNode
+console.log(itemList.parentNode)
 
-let listItem3 = document.querySelector('.list-group-item:nth-child(3)');
-listItem3.style.display = 'none'
+//parentElement
+console.log(itemList.parentElement)
+
+//childNode
+console.log(itemList.childNodes)
+
+//childrens
+console.log(itemList.children)
 
 
-//Query Selector All
+//singlechildren
+console.log(itemList.children[0])
+itemList.children[0].textContent = 'HELLO Item 1'
 
-let listItems = document.querySelectorAll('.list-group-item');
-console.log(listItems)
+//firstChild
+console.log(itemList.firstChild)
 
-listItems[1].style.color = 'white'
+//lastChild
+console.log(itemList.lastChild)
 
-for(let i = 0;i<listItems.length;i++)
-{
-    if(i%2 != 0)
-    {
-        listItems[i].style.backgroundColor = 'green'
-    }
-}
+//firstElementChild
+console.log(itemList.firstElementChild)
+
+
+//lastElementChild
+console.log(itemList.lastElementChild)
+
+//nextSibling
+console.log(itemList.nextSibling)
+
+//previousSibling
+console.log(itemList.previousSibling)
+
+//nextElementSibling
+console.log(itemList.nextElementSibling)
+
+//previousElementSibling
+console.log(itemList.previousElementSibling)
+
+//createElement
+let newDiv = document.createElement('div')
+console.log(newDiv);
+newDiv.className = 'hello';
+newDiv.id = 'hi'; 
+
+//setAttribute
+newDiv.setAttribute('title','Hello Div');
+
+//createTextNode
+let newDivText = document.createTextNode('Hello World');
+
+//adding textNode to Div
+newDiv.appendChild(newDivText); 
+
+
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+container.insertBefore(newDiv,h1);
+
+
+
+
+itemList.previousElementSibling.previousElementSibling.previousElementSibling.textContent = 'HELLO Add Items'
+
+
+itemList.children[0].textContent = 'HELLO Item 1'
