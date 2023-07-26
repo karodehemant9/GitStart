@@ -54,23 +54,51 @@ function showUserOnScreen(User)
     // Add text node with input values
     newli.appendChild(document.createTextNode(`${nameInput.value} - ${emailInput.value} - ${phoneInput.value}`));
 
+    //creating delete button
     const deleteBtn = document.createElement('input');
     deleteBtn.setAttribute('type','button');
     deleteBtn.setAttribute('value','Delete');
     deleteBtn.id = 'deleteButton';
 
-    
+
+
+    //creating edit button
+    const editBtn = document.createElement('input');
+    editBtn.setAttribute('type','button');
+    editBtn.setAttribute('value','Edit');
+    editBtn.id = 'editButton';
 
     newli.appendChild(deleteBtn);
+    newli.appendChild(editBtn);
 
     // Append to ul
     userList.appendChild(newli);
 
+    let deleteButton = document.getElementById('deleteButton');
     deleteButton.onclick = () => {
         deleteButton.parentElement.remove();
         localStorage.removeItem(User.email);
      };
 
+
+     let editButton = document.getElementById('editButton');
+     console.log(editButton.parentElement);
+     editButton.onclick = () => {
+      let name = User.name;
+      let email = User.email;
+      let phone = User.contact_no;
+      editButton.parentElement.remove();
+      fillForm(name,email,phone);
+
+   };
+
+}
+
+function fillForm(name,email,phone)
+{
+    document.getElementById("name").value = name;
+    document.getElementById("email").value = email;
+    document.getElementById("phone").value = phone;
 }
 
 
