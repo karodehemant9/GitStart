@@ -1,5 +1,4 @@
 // USER FORM SCRIPT
-
 // Put DOM elements into variables
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
@@ -10,6 +9,7 @@ const userList = document.querySelector('#users');
 
 // Listen for form submit
 myForm.addEventListener('submit', onSubmit);
+
 
 function onSubmit(e) {
   e.preventDefault();
@@ -36,22 +36,43 @@ function onSubmit(e) {
     let deserializedUser = JSON.parse(localStorage.getItem(emailInput.value));
     console.log(deserializedUser);
 
+    showUserOnScreen(User);
 
 
-
-    // Create new list item with user
-    const li = document.createElement('li');
-
-    // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value} - ${emailInput.value} - ${phoneInput.value}`));
-
-
-    // Append to ul
-    userList.appendChild(li);
+    
 
     // Clear fields
-    nameInput.value = '';
-    emailInput.value = '';
-    phoneInput.value = '';
+   
   }
 }
+
+function showUserOnScreen(User)
+{
+    // Create new list item with user
+    const newli = document.createElement('li');
+
+    // Add text node with input values
+    newli.appendChild(document.createTextNode(`${nameInput.value} - ${emailInput.value} - ${phoneInput.value}`));
+
+    const deleteBtn = document.createElement('input');
+    deleteBtn.setAttribute('type','button');
+    deleteBtn.setAttribute('value','Delete');
+    deleteBtn.id = 'deleteButton';
+
+    
+
+    newli.appendChild(deleteBtn);
+
+    // Append to ul
+    userList.appendChild(newli);
+
+    deleteButton.onclick = () => {
+        deleteButton.parentElement.remove();
+        localStorage.removeItem(User.email);
+     };
+
+}
+
+
+
+
