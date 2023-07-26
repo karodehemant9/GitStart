@@ -4,8 +4,6 @@
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
-console.log(nameInput);
-console.log(emailInput);
 const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users');
 
@@ -23,8 +21,17 @@ function onSubmit(e) {
     // Remove error after 3 seconds
     setTimeout(() => msg.remove(), 3000);
   } else {
-    //storing data in local storage
-    localStorage.setItem('name',nameInput.value);
-    localStorage.setItem('email',emailInput.value);
+    //storing User object in local storage
+    let User = {
+        name : nameInput.value,
+        email : emailInput.value
+    };
+
+    let serializedUser = JSON.stringify(User);
+    localStorage.setItem('user',serializedUser);
+    
+
+    let deserializedUser = JSON.parse(localStorage.getItem('user'));
+    console.log(deserializedUser);
   }
 }
